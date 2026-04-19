@@ -138,25 +138,25 @@ def main():
             st.subheader("Input ringkasan")
             st.dataframe(row, use_container_width=True)
     
-        # ambil probability dari hasil predict_proba
-        placement_prob = placement_proba[0][1] 
-        percentage = int(placement_prob * 100)
-        
-        st.subheader("📊 Placement Probability")
-        
-        # tampilkan angka persen
-        st.metric(label="Chance of Being Placed", value=f"{percentage}%")
-        
-        # progress bar
-        st.progress(percentage)
-        
-        # interpretasi
-        if percentage >= 75:
-            st.success("High chance of placement 🎉")
-        elif percentage >= 50:
-            st.info("Moderate chance of placement 👍")
-        else:
-            st.warning("Low chance of placement ⚠️")
+            # ambil probability dari hasil predict_proba
+            placement_prob = placement_proba[0][1] 
+            percentage = int(placement_prob * 100)
             
+            st.subheader("📊 Placement Probability")
+            
+            # tampilkan angka persen
+            st.metric(label="Chance of Being Placed", value=f"{percentage}%")
+            
+            # progress bar
+            st.progress(percentage)
+            
+            # interpretasi
+            if percentage >= 75:
+                st.success("High chance of placement 🎉")
+            elif percentage >= 50:
+                st.info("Moderate chance of placement 👍")
+            else:
+                st.warning("Low chance of placement ⚠️")
+                
 if __name__ == "__main__":
     main()
