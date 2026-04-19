@@ -139,7 +139,7 @@ def main():
             st.dataframe(row, use_container_width=True)
     
         # ambil probability dari hasil predict_proba
-        placement_prob = placement_proba[1]  # asumsi index 1 = "Placed"
+        placement_prob = placement_proba[0][1] 
         percentage = int(placement_prob * 100)
         
         st.subheader("📊 Placement Probability")
