@@ -137,7 +137,6 @@ with right:
 
         st.subheader("Input ringkasan")
         st.dataframe(row, use_container_width=True)
-    )
 
     placement_prob = placement_proba[0][1]  # ambil probabilitas "Placed"
     percentage = int(placement_prob * 100)
