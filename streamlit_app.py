@@ -54,7 +54,7 @@ def main():
     placement_model, salary_model = load_models()
     data = load_source_data()
 
-    left, right = st.columns([1.4, 1.0])
+    left, right = st.columns([1.4, 1.05])
 
     with left:
         st.subheader("Input mahasiswa")
