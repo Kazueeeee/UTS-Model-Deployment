@@ -88,22 +88,22 @@ def main():
 
             col_a, col_b = st.columns(2)
             with col_a:
-                cgpa = st.number_input("CGPA", min_value=0.0, max_value=10.0, value=med(data["cgpa"]), step=0.01)
-                tenth_percentage = st.number_input("10th percentage", min_value=0.0, max_value=100.0, value=med(data["tenth_percentage"]), step=0.01)
-                twelfth_percentage = st.number_input("12th percentage", min_value=0.0, max_value=100.0, value=med(data["twelfth_percentage"]), step=0.01)
-                study_hours_per_day = st.number_input("Study hours per day", min_value=0.0, max_value=24.0, value=med(data["study_hours_per_day"]), step=0.1)
-                attendance_percentage = st.number_input("Attendance percentage", min_value=0.0, max_value=100.0, value=med(data["attendance_percentage"]), step=0.1)
-                sleep_hours = st.number_input("Sleep hours", min_value=0.0, max_value=24.0, value=med(data["sleep_hours"]), step=0.1)
+                cgpa = st.slider("CGPA", min_value=0.0, max_value=10.0, value=med(data["cgpa"]), step=0.01)
+                tenth_percentage = st.slider("10th percentage", min_value=0.0, max_value=100.0, value=med(data["tenth_percentage"]), step=0.01)
+                twelfth_percentage = st.slider("12th percentage", min_value=0.0, max_value=100.0, value=med(data["twelfth_percentage"]), step=0.01)
+                study_hours_per_day = st.slider("Study hours per day", min_value=0.0, max_value=24.0, value=med(data["study_hours_per_day"]), step=0.1)
+                attendance_percentage = st.slider("Attendance percentage", min_value=0.0, max_value=100.0, value=med(data["attendance_percentage"]), step=0.1)
+                sleep_hours = st.slider("Sleep hours", min_value=0.0, max_value=24.0, value=med(data["sleep_hours"]), step=0.1)
                 stress_level = st.slider("Stress level", min_value=1, max_value=10, value=int(round(med(data["stress_level"]))))
             with col_b:
-                backlogs = st.number_input("Backlogs", min_value=0, max_value=20, value=int(round(med(data["backlogs"]))), step=1)
-                projects_completed = st.number_input("Projects completed", min_value=0, max_value=20, value=int(round(med(data["projects_completed"]))), step=1)
-                internships_completed = st.number_input("Internships completed", min_value=0, max_value=10, value=int(round(med(data["internships_completed"]))), step=1)
+                backlogs = st.slider("Backlogs", min_value=0, max_value=20, value=int(round(med(data["backlogs"]))), step=1)
+                projects_completed = st.slider("Projects completed", min_value=0, max_value=20, value=int(round(med(data["projects_completed"]))), step=1)
+                internships_completed = st.slider("Internships completed", min_value=0, max_value=10, value=int(round(med(data["internships_completed"]))), step=1)
                 coding_skill_rating = st.slider("Coding skill rating", min_value=1, max_value=10, value=int(round(med(data["coding_skill_rating"]))))
                 communication_skill_rating = st.slider("Communication skill rating", min_value=1, max_value=10, value=int(round(med(data["communication_skill_rating"]))))
                 aptitude_skill_rating = st.slider("Aptitude skill rating", min_value=1, max_value=10, value=int(round(med(data["aptitude_skill_rating"]))))
-                hackathons_participated = st.number_input("Hackathons participated", min_value=0, max_value=20, value=int(round(med(data["hackathons_participated"]))), step=1)
-                certifications_count = st.number_input("Certifications count", min_value=0, max_value=20, value=int(round(med(data["certifications_count"]))), step=1)
+                hackathons_participated = st.slider("Hackathons participated", min_value=0, max_value=20, value=int(round(med(data["hackathons_participated"]))), step=1)
+                certifications_count = st.slider("Certifications count", min_value=0, max_value=20, value=int(round(med(data["certifications_count"]))), step=1)
 
             submitted = st.form_submit_button("Predict")
 
