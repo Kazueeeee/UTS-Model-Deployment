@@ -85,12 +85,12 @@ def main():
                 sleep_hours = st.slider("Sleep hours", min_value=0.0, max_value=24.0, value=med(data["sleep_hours"]), step=0.1)
                 stress_level = st.slider("Stress level", min_value=1, max_value=10, value=int(round(med(data["stress_level"]))))
             with col_b:
-                backlogs = st.slider("Backlogs", min_value=0, max_value=20, value=int(round(med(data["backlogs"]))), step=1)
+                backlogs = st.slider("Backlogs", min_value=0, max_value=10, value=int(round(med(data["backlogs"]))), step=1)
                 projects_completed = st.slider("Projects completed", min_value=0, max_value=20, value=int(round(med(data["projects_completed"]))), step=1)
                 internships_completed = st.slider("Internships completed", min_value=0, max_value=10, value=int(round(med(data["internships_completed"]))), step=1)
-                coding_skill_rating = st.slider("Coding skill rating", min_value=1, max_value=10, value=int(round(med(data["coding_skill_rating"]))))
-                communication_skill_rating = st.slider("Communication skill rating", min_value=1, max_value=10, value=int(round(med(data["communication_skill_rating"]))))
-                aptitude_skill_rating = st.slider("Aptitude skill rating", min_value=1, max_value=10, value=int(round(med(data["aptitude_skill_rating"]))))
+                coding_skill_rating = st.slider("Coding skill rating", min_value=1, max_value=5, value=int(round(med(data["coding_skill_rating"]))))
+                communication_skill_rating = st.slider("Communication skill rating", min_value=1, max_value=5, value=int(round(med(data["communication_skill_rating"]))))
+                aptitude_skill_rating = st.slider("Aptitude skill rating", min_value=1, max_value=5, value=int(round(med(data["aptitude_skill_rating"]))))
                 hackathons_participated = st.slider("Hackathons participated", min_value=0, max_value=20, value=int(round(med(data["hackathons_participated"]))), step=1)
                 certifications_count = st.slider("Certifications count", min_value=0, max_value=20, value=int(round(med(data["certifications_count"]))), step=1)
     
