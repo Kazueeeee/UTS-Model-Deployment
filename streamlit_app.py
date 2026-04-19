@@ -54,20 +54,9 @@ def main():
     placement_model, salary_model = load_models()
     data = load_source_data()
 
-    # Summary visuals
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Jumlah data", f"{len(data):,}")
-    c2.metric("Placed", f"{(data['placement_status'] == 'Placed').sum():,}")
-    c3.metric("Not Placed", f"{(data['placement_status'] == 'Not Placed').sum():,}")
-
-    left, right = st.columns([1.05, 1.4])
+    left, right = st.columns([1.4, 1.0])
 
     with left:
-        st.subheader("Dataset snapshot")
-        st.bar_chart(data["placement_status"].value_counts())
-        st.caption("Distribusi target placement pada data historis.")
-
-    with right:
         st.subheader("Input mahasiswa")
         with st.form("prediction_form"):
             # Defaults from data
@@ -107,6 +96,9 @@ def main():
 
             submitted = st.form_submit_button("Predict")
 
+
+
+with right:
         if submitted:
             row = pd.DataFrame([{
                 "gender": gender,
@@ -143,21 +135,28 @@ def main():
             result_col2.metric("Probability placed", f"{placement_proba[1] * 100:.1f}%")
             result_col3.metric("Estimated salary", f"₹ {salary_pred:.2f} LPA")
 
-            st.info(
-                "Model salary dilatih hanya pada data mahasiswa yang placed. "
-                "Jika prediksi placement = Not Placed, salary sebaiknya dibaca sebagai estimasi hipotetis."
-            )
-
             st.subheader("Input ringkasan")
             st.dataframe(row, use_container_width=True)
-
-    st.divider()
-    st.subheader("About the model")
-    st.write(
-        "Pipeline menggunakan feature engineering, imputasi missing values, encoding kategori, scaling numerik, "
-        "dan model terpilih yang disimpan dalam format pickle."
     )
 
+    placement_prob = placement_proba[0][1]  # ambil probabilitas "Placed"
+    percentage = int(placement_prob * 100)
 
-if __name__ == "__main__":
-    main()
+    st.subheader("📊 Placement Probability")
+
+# tampilkan angka persen
+    st.metric(label="Chance of Being Placed", value=f"{percentage}%")
+
+# progress bar (garis persentase)
+    st.progress(percentage)
+
+# tambahan interpretasi
+    if percentage >= 75:
+        st.success("High chance of placement 🎉")
+    elif percentage >= 50:
+        st.info("Moderate chance of placement 👍")
+    else:
+        st.warning("Low chance of placement ⚠️")
+
+    if __name__ == "__main__":
+        main()
