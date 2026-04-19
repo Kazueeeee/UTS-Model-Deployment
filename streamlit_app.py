@@ -54,7 +54,7 @@ def main():
     placement_model, salary_model = load_models()
     data = load_source_data()
     
-    left, right = st.columns([1.4, 1.05])
+    left, right = st.columns([1.5, 1.5])
 
     with left:
         st.subheader("Input mahasiswa")
@@ -138,7 +138,7 @@ def main():
             st.subheader("Input ringkasan")
             st.dataframe(row, use_container_width=True)
     
-        placement_prob = placement_proba[0][1]  # ambil probabilitas "Placed"
+        placement_prob = placement_proba[input_df][0]  # ambil probabilitas "Placed"
         percentage = int(placement_prob * 100)
     
         st.subheader("📊 Placement Probability")
@@ -158,4 +158,4 @@ def main():
             st.warning("Low chance of placement ⚠️")
 
 if __name__ == "__main__":
-     main()
+    main()
